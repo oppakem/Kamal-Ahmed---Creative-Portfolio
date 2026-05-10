@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Outfit", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+
+  --color-gold: #C9A227;
+  --color-gold-light: #F5D060;
+  --color-gold-dark: #8B6914;
+  --color-bg: #080808;
+  --color-bg2: #0d0d0d;
+  --color-bg3: #111111;
+  --color-border: #1e1e1e;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white antialiased overflow-x-hidden cursor-none;
+  }
+
+  /* Custom Scrollbar for Luxury Feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold/30 hover:bg-gold transition-colors duration-300;
+  }
+
+  [dir="rtl"] {
+    @apply font-cairo;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 30px rgba(201,162,39,0.3);
+  }
+  
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(201,162,39,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,162,39,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .gold-gradient {
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 1024px) {
+  * {
+    cursor: none !important;
+  }
+}
